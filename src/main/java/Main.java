@@ -6,7 +6,10 @@ public class Main {
 
     private static Game game = new Game();
 
+
     public static void main(String[] args) {
+        AreaData.loadAreas();
+
         System.out.println("Welcome to the world's most boring text adventure game.");
         String input;
         String output;
