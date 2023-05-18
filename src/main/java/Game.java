@@ -6,12 +6,12 @@ public class Game {
     public static int currentLocation = 0;
     public static boolean justArrived = true;
 
-    public static Board board1 = new Board(2,2);
+    public static Board board1 = new Board(5,5);
 
     public static BoardWindow boardWindow = new BoardWindow(board1, "My Example Board", 100);
 
     public static boolean checkWinState() {
-        return currentLocation == 6;
+        return currentLocation == 24;
     }
 
     public static Area getGameArea() throws Exception {
