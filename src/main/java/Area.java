@@ -19,4 +19,8 @@ public class Area {
     public String getAreaDescription() {
         return areaDescription;
     }
+
+    public int[] getDirectionOptions() {
+        return directionOptions;
+    }
 }
