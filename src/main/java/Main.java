@@ -1,5 +1,3 @@
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.Scanner;
 
 public class Main {
@@ -17,12 +15,14 @@ public class Main {
         System.out.println("Welcome to the world's most exciting text adventure game.");
         String input;
         String output;
+        try {
+            Game.loadAreas();
+        } catch (Exception e) {
+            System.out.println("Fault loading areas");
+        }
+        Game.loadMap();
         do {
-            try {
-                Game.gameState();
-            } catch (Exception e) {
-                System.out.println("You're in Davy Jones' locker. Game Over!");
-            }
+            Game.printAreaText();
             System.out.print("> ");
             input = sc.nextLine();
             output = game.runCommand(input);

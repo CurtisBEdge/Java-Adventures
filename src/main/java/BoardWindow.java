@@ -94,12 +94,12 @@ public class BoardWindow extends Canvas {
   public void setTitle(String title) {
     this.title = title;
   }
-
-  public static void main(String[] args) {
-    Board board1 = new Board(5,5);
-    BoardWindow boardWindow = new BoardWindow(board1, "My Example Board", 200);
-    boardWindow.getBoard().setCell(3, 2, CellType.START);
-    boardWindow.getBoard().setCell(3, 3, CellType.START);
-    boardWindow.getBoard().setCell(4, 3, CellType.START);
-  }
 }
+//  public static void main(String[] args) {
+//    Board board1 = new Board(2,2);
+//    BoardWindow boardWindow = new BoardWindow(board1, "My Example Board", 100);
+//    boardWindow.getBoard().setCell(0, 0, CellType.START);
+//    boardWindow.getBoard().setCell(0, 0, CellType.CURRENT_ROOM);
+//    boardWindow.getBoard().setCell(0, 1, CellType.VISITED);
+//  }
+//}

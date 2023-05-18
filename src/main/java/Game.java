@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.stream.Stream;
 
 public class Game {
 
@@ -7,31 +6,37 @@ public class Game {
     public static int currentLocation = 0;
     public static boolean justArrived = true;
 
+    public static Board board1 = new Board(2,2);
+
+    public static BoardWindow boardWindow = new BoardWindow(board1, "My Example Board", 100);
+
     public static boolean checkWinState() {
-        if (currentLocation == 3) {
-            return true;
-        } else {
-            return false;
-        }
+        return currentLocation == 6;
     }
+
     public static Area getGameArea() throws Exception {
         Area foundArea = areas.stream()
                 .filter(area -> currentLocation == area.areaId)
                 .findFirst()
                 .orElseThrow(AreaNotFoundException::new);
+        foundArea.setHasVisited();
         return foundArea;
     }
 
-    public static void gameState() throws Exception {
+    public static void loadMap() {
+        boardWindow.getBoard().setCell(0, 0, CellType.START);
+    }
+
+    public static void loadAreas() {
         areas = AreaData.loadAreas();
+    }
+
+    public static void printAreaText() throws Exception {
         if (justArrived) {
             Area foundArea = getGameArea();
             System.out.println(foundArea.getAreaDescription());
             justArrived = false;
-
-
         }
-
     }
 
     public static List<String> getWordList(String input) {
@@ -49,7 +54,7 @@ public class Game {
         String noun;
         List<String> commands = new ArrayList<>(Arrays.asList("sail", "inspect", "take", "drop"));
         List<String> nouns = new ArrayList<>(Arrays.asList("north", "east", "south", "west", "banana", "used-chewing-gum", "gold-coin"));
-        if ((words.size() > 2) || (words.size() < 2)) {
+        if (words.size() != 2) {
             System.out.println("Commands should just be 2 words");
         } else {
             verb = words.get(0);
@@ -70,11 +75,15 @@ public class Game {
                 int[] directionOptions = foundArea.getDirectionOptions();
                 if (directionOptions[sailDirection] != -1){
                     System.out.println("Aye, Captain!");
-                    currentLocation = directionOptions[sailDirection];
                     justArrived = true;
+                    boardWindow.getBoard().setCell(foundArea.getRowPosition(), foundArea.getColumnPosition(), CellType.VISITED);
+                    currentLocation = directionOptions[sailDirection];
+                    Area newArea = getGameArea();
+                    boardWindow.getBoard().setCell(newArea.getRowPosition(), newArea.getColumnPosition(), CellType.CURRENT_ROOM);
+                    boardWindow.repaint();
                 } else {
                     System.out.println("You can't sail us off the edge of the world, Captain.");
-                };
+                }
             }
         }
     }
