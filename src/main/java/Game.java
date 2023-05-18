@@ -49,7 +49,7 @@ public class Game {
         String noun;
         List<String> commands = new ArrayList<>(Arrays.asList("sail", "inspect", "take", "drop"));
         List<String> nouns = new ArrayList<>(Arrays.asList("north", "east", "south", "west", "banana", "used-chewing-gum", "gold-coin"));
-        if (words.size() > 2) {
+        if ((words.size() > 2) || (words.size() < 2)) {
             System.out.println("Commands should just be 2 words");
         } else {
             verb = words.get(0);
@@ -87,7 +87,7 @@ public class Game {
             output = "...Well?";
         } else {
             wordList = getWordList(lowerCaseTrimmed);
-            wordList.forEach(System.out::println);
+//            wordList.forEach(System.out::println);
             parseCommand(wordList);
         }
 

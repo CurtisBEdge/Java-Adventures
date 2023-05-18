@@ -19,7 +19,6 @@ public class Main {
         String output;
         do {
             try {
-                System.out.println(winState);
                 Game.gameState();
             } catch (Exception e) {
                 System.out.println("You're in Davy Jones' locker. Game Over!");
@@ -29,7 +28,10 @@ public class Main {
             output = game.runCommand(input);
             winState = Game.checkWinState();
         } while ((!"quit".equals(input)) && (winState == false));
-        System.out.println("Congratulations, you win!");
+        if (winState == true) {
+            System.out.println("Congratulations, you win!");
+        }
+
     }
 
 }
