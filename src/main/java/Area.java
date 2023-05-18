@@ -4,13 +4,13 @@ public class Area {
 
     public String areaDescription;
 
-    public String[] directionOptions;
+    public int[] directionOptions;
 
     public boolean hasVisited;
 
     public boolean currentPosition;
 
-    public Area(Integer areaId, String areaDescription, String[] directionOptions, boolean currentPosition) {
+    public Area(Integer areaId, String areaDescription, int[] directionOptions, boolean currentPosition) {
         this.areaId = areaId;
         this.areaDescription = areaDescription;
         this.directionOptions = directionOptions;

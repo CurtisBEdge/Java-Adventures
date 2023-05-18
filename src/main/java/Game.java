@@ -1,12 +1,25 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class Game {
 
+    public static ArrayList<Area> areas = new ArrayList<>();
+    public static int currentLocation = 0;
 
-    public Game() {
+    public static boolean justArrived = true;
+
+    public static void gameState() throws Exception {
+        areas = AreaData.loadAreas();
+        if (justArrived) {
+            Area foundArea = areas.stream()
+                    .filter(area -> currentLocation == area.areaId)
+                    .findFirst()
+                    .orElseThrow(AreaNotFoundException::new);
+            System.out.println(foundArea.getAreaDescription());
+
+
+        }
+
     }
 
     public static List<String> getWordList(String input) {
@@ -22,7 +35,7 @@ public class Game {
     public static void parseCommand(List<String> words) {
         String verb;
         String noun;
-        List<String> commands = new ArrayList<>(Arrays.asList("inspect", "take", "drop"));
+        List<String> commands = new ArrayList<>(Arrays.asList("sail", "inspect", "take", "drop"));
         List<String> nouns = new ArrayList<>(Arrays.asList("banana", "used-chewing-gum", "gold-coin"));
         if (words.size() > 2) {
             System.out.println("Commands should just be 2 words");
