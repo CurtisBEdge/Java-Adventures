@@ -7,7 +7,7 @@ public class Item {
     }
 
 public String getItemName() {
-        return this.itemName;
+        return itemName;
     }
 
 }

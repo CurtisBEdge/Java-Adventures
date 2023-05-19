@@ -15,8 +15,8 @@ public class AreaData {
         areas.add(new Area(5, "You're on the open sea. An island is to your South East", new int[]{0, 6, 10, -1}, 1, 0));
         areas.add(new Area(6, "You're on the open sea. An island is directly to your South and another to your North East", new int[]{1, 7, 11, 5}, 1, 1));
         areas.add(new Area(7, "You're on the open sea. An island is directly to your North and another to your South West", new int[]{2, 8, 12, 6}, 1, 2));
-        areas.add(new Area(8, "This is the first area 0", new int[]{3, 9, 13, 7}, 1, 3));
-        areas.add(new Area(9, "This is the second area 1", new int[]{4, -1, 14, 8}, 1, 4));
+        areas.add(new Area(8, "You're on the open sea. An island is directly to your North West", new int[]{3, 9, 13, 7}, 1, 3));
+        areas.add(new Area(9, "You're on the open sea. An island is directly to your South", new int[]{4, -1, 14, 8}, 1, 4));
         areas.add(new Area(10, "This is the third area 2", new int[]{5, 11, 15, -1}, 2, 0));
         areas.add(new Area(11, "This is the fourth area 3", new int[]{6, 12, 16, 10}, 2, 1));
         areas.add(new Area(12, "This is the first area 0", new int[]{7, 13, 17, 11}, 2, 2));

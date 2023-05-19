@@ -3,8 +3,12 @@ import java.util.*;
 public class Game {
 
     public static ArrayList<Area> areas;
+    public static int supplies = 20;
+    public static boolean checkSupplies() {
+        return (supplies > 0);
+    }
 
-    public static ArrayList<Item> playerInventory;
+    public static ArrayList<Item> playerInventory = new ArrayList<>();
     public static ArrayList<Item> island2Inventory;
     public static ArrayList<Item> island11Inventory;
     public static ArrayList<Item> island14Inventory;
@@ -92,6 +96,7 @@ public class Game {
             if (directionOptions[sailDirection] != -1){
                 System.out.println("Aye, Captain!");
                 justArrived = true;
+                supplies--;
                 boardWindow.getBoard().setCell(foundArea.getRowPosition(), foundArea.getColumnPosition(), CellType.VISITED);
                 currentLocation = directionOptions[sailDirection];
                 Area newArea = getGameArea();
@@ -103,7 +108,7 @@ public class Game {
         }
     }
 
-    public static void toTake(List<String> words) throws Exception{
+    public static void toTake(List<String> words) {
         ArrayList<Item> currentLocationInventory;
         if (currentLocation == 2) {
             currentLocationInventory = island2Inventory;
@@ -121,22 +126,24 @@ public class Game {
         currentLocationInventory.forEach((item) -> System.out.println(item.getItemName())  );
 
 
-//        Item takenItem = currentLocationInventory.stream()
-//                .filter(item -> words.get(1).equals(item.getItemName().toLowerCase()))
-//                .findFirst()
-//                .ifPresentOrElse();
-//        System.out.println("we get here");
-//        playerInventory.add(takenItem);
-//        System.out.println("then we get here");
-//        playerInventory.forEach((item) -> System.out.println("from player inv" + item.getItemName()));
-//        currentLocationInventory.forEach((item) -> System.out.println("From Island inventory" + item.getItemName()));
+        try {
+            Item takenItem = currentLocationInventory.stream()
+                    .filter(item -> words.get(1).equals(item.getItemName().toLowerCase()))
+                    .findFirst()
+                    .orElseThrow(()-> new ItemNotFoundException());
+            playerInventory.add(takenItem);
+            currentLocationInventory.remove(takenItem);
+        } catch (ItemNotFoundException e) {
+            System.out.println("There is no " + words.get(1) + " here.");
+        }
     }
+
 
     public static void parseCommand(List<String> words) throws Exception {
         String verb;
         String noun;
         List<String> commands = new ArrayList<>(Arrays.asList("sail", "inspect", "take", "drop"));
-        List<String> nouns = new ArrayList<>(Arrays.asList("north", "east", "south", "west", "banana", "used-chewing-gum", "gold-coin"));
+        List<String> nouns = new ArrayList<>(Arrays.asList("north", "east", "south", "west", "banana", "used-chewing-gum", "gold-coin", "skull"));
         if (words.size() != 2) {
             System.out.println("Commands should just be 2 words");
         } else {
@@ -155,6 +162,7 @@ public class Game {
         if (words.get(0).equals("take")) {
             toTake(words);
         }
+
     }
 
     public String runCommand(String input) throws Exception {

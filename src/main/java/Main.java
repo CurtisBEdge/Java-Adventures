@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Main {
 
     public static boolean winState = false;
+    public static boolean hasSupplies = true;
 
     private static Scanner sc = new Scanner(System.in);
 
@@ -10,7 +11,6 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
-//        Game.loadIslandItems();
 
         System.out.println("Welcome to the world's most exciting text adventure game.");
         String input;
@@ -28,9 +28,13 @@ public class Main {
             input = sc.nextLine();
             output = game.runCommand(input);
             winState = Game.checkWinState();
-        } while ((!"quit".equals(input)) && (winState == false));
+            hasSupplies = Game.checkSupplies();
+        } while ((!"quit".equals(input)) && (winState == false) && (hasSupplies == true));
         if (winState == true) {
-            System.out.println("Congratulations, you win!");
+            System.out.println("Congratulations, you found the treasure! You're a real pirate now!");
+        }
+        if (hasSupplies == false) {
+            System.out.println("You've run out of supplies and your crew has mutinied. You're walking the plank.");
         }
 
     }
