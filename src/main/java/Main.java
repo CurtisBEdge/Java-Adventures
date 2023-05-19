@@ -10,7 +10,7 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
-        AreaData.loadAreas();
+//        Game.loadIslandItems();
 
         System.out.println("Welcome to the world's most exciting text adventure game.");
         String input;
@@ -21,6 +21,7 @@ public class Main {
             System.out.println("Fault loading areas");
         }
         Game.loadMap();
+        Game.loadIslandItems();
         do {
             Game.printAreaText();
             System.out.print("> ");

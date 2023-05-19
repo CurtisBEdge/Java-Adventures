@@ -2,7 +2,16 @@ import java.util.*;
 
 public class Game {
 
-    public static ArrayList<Area> areas = new ArrayList<>();
+    public static ArrayList<Area> areas;
+
+    public static ArrayList<Item> playerInventory;
+    public static ArrayList<Item> island2Inventory;
+    public static ArrayList<Item> island11Inventory;
+    public static ArrayList<Item> island14Inventory;
+    public static ArrayList<Item> island20Inventory;
+
+
+
     public static int currentLocation = 0;
     public static boolean justArrived = true;
 
@@ -31,11 +40,35 @@ public class Game {
         areas = AreaData.loadAreas();
     }
 
+    public static void loadIslandItems() {
+        island2Inventory = itemData.loadIsland2Items();
+        island11Inventory = itemData.loadIsland11Items();
+        island14Inventory = itemData.loadIsland14Items();
+        island20Inventory = itemData.loadIsland20Items();
+    }
+
     public static void printAreaText() throws Exception {
         if (justArrived) {
             Area foundArea = getGameArea();
             System.out.println(foundArea.getAreaDescription());
+            listInventory();
             justArrived = false;
+        }
+    }
+
+    public static void listInventory() {
+        if (currentLocation == 2) {
+            System.out.println("You can see...");
+            island2Inventory.forEach((item) -> System.out.println(item.getItemName()) );
+        } else if (currentLocation == 11) {
+            System.out.println("You can see...");
+            island11Inventory.forEach((item) -> System.out.println(item.getItemName()) );
+        } else if (currentLocation == 14) {
+            System.out.println("You can see...");
+            island14Inventory.forEach((item) -> System.out.println(item.getItemName()) );
+        } else if (currentLocation == 20) {
+            System.out.println("You can see...");
+            island20Inventory.forEach((item) -> System.out.println(item.getItemName()) );
         }
     }
 
@@ -47,6 +80,56 @@ public class Game {
             words.add(tokenizer.nextToken());
         }
         return words;
+    }
+
+    public static void toSail(List<String> words ) throws Exception {
+        int sailDirection = Sail.sailDirection(words.get(1));
+        if (sailDirection == -1) {
+            System.out.println("Not a valid direction");
+        } else {
+            Area foundArea = getGameArea();
+            int[] directionOptions = foundArea.getDirectionOptions();
+            if (directionOptions[sailDirection] != -1){
+                System.out.println("Aye, Captain!");
+                justArrived = true;
+                boardWindow.getBoard().setCell(foundArea.getRowPosition(), foundArea.getColumnPosition(), CellType.VISITED);
+                currentLocation = directionOptions[sailDirection];
+                Area newArea = getGameArea();
+                boardWindow.getBoard().setCell(newArea.getRowPosition(), newArea.getColumnPosition(), CellType.CURRENT_ROOM);
+                boardWindow.repaint();
+            } else {
+                System.out.println("You can't sail us off the edge of the world, Captain.");
+            }
+        }
+    }
+
+    public static void toTake(List<String> words) throws Exception{
+        ArrayList<Item> currentLocationInventory;
+        if (currentLocation == 2) {
+            currentLocationInventory = island2Inventory;
+        } else if (currentLocation == 11) {
+            currentLocationInventory = island11Inventory;
+        } else if (currentLocation == 14) {
+            currentLocationInventory = island14Inventory;
+        } else if (currentLocation == 20) {
+            currentLocationInventory = island20Inventory;
+        } else {
+            currentLocationInventory = new ArrayList<>();
+        }
+        System.out.println(words.get(1));
+
+        currentLocationInventory.forEach((item) -> System.out.println(item.getItemName())  );
+
+
+//        Item takenItem = currentLocationInventory.stream()
+//                .filter(item -> words.get(1).equals(item.getItemName().toLowerCase()))
+//                .findFirst()
+//                .ifPresentOrElse();
+//        System.out.println("we get here");
+//        playerInventory.add(takenItem);
+//        System.out.println("then we get here");
+//        playerInventory.forEach((item) -> System.out.println("from player inv" + item.getItemName()));
+//        currentLocationInventory.forEach((item) -> System.out.println("From Island inventory" + item.getItemName()));
     }
 
     public static void parseCommand(List<String> words) throws Exception {
@@ -67,24 +150,10 @@ public class Game {
             }
         }
         if (words.get(0).equals("sail")) {
-            int sailDirection = Sail.sailDirection(words.get(1));
-            if (sailDirection == -1) {
-                System.out.println("Not a valid direction");
-            } else {
-                Area foundArea = getGameArea();
-                int[] directionOptions = foundArea.getDirectionOptions();
-                if (directionOptions[sailDirection] != -1){
-                    System.out.println("Aye, Captain!");
-                    justArrived = true;
-                    boardWindow.getBoard().setCell(foundArea.getRowPosition(), foundArea.getColumnPosition(), CellType.VISITED);
-                    currentLocation = directionOptions[sailDirection];
-                    Area newArea = getGameArea();
-                    boardWindow.getBoard().setCell(newArea.getRowPosition(), newArea.getColumnPosition(), CellType.CURRENT_ROOM);
-                    boardWindow.repaint();
-                } else {
-                    System.out.println("You can't sail us off the edge of the world, Captain.");
-                }
-            }
+            toSail(words);
+        }
+        if (words.get(0).equals("take")) {
+            toTake(words);
         }
     }
 

@@ -7,8 +7,8 @@ public class AreaData {
 
 //        Direction order North, East, South then West.
 
-        areas.add(new Area(0, "You're on the open sea. You can see an island in the distance to the East.", new int[]{-1, 1, 2, -1}, 0, 0));
-        areas.add(new Area(1, "You're on the open sea. An island is directly to your East", new int[]{-1, 2, 6, 0}, 0, 1));
+        areas.add(new Area(0, "You're on the open sea. You can see an island in the distance to the East.", new int[]{-1, 1, 5, -1}, 0, 0));
+        areas.add(new Area(1, "You're on the open sea. An island is directly to your East and another in the distance to the South", new int[]{-1, 2, 6, 0}, 0, 1));
         areas.add(new Area(2, "You're on Island 2", new int[]{-1, 3, 7, 1}, 0, 2));
         areas.add(new Area(3, "You're on the open sea. An island is directly to your West", new int[]{-1, 4, 8, 2}, 0, 3));
         areas.add(new Area(4, "You're on the open sea. You can see islands in the distance to the East and the South", new int[]{-1, -1, 9, 3}, 0, 4));
