@@ -100,6 +100,7 @@ public class Game {
                 boardWindow.getBoard().setCell(foundArea.getRowPosition(), foundArea.getColumnPosition(), CellType.VISITED);
                 currentLocation = directionOptions[sailDirection];
                 Area newArea = getGameArea();
+                checkForEvents();
                 boardWindow.getBoard().setCell(newArea.getRowPosition(), newArea.getColumnPosition(), CellType.CURRENT_ROOM);
                 boardWindow.repaint();
             } else {
@@ -138,12 +139,23 @@ public class Game {
         }
     }
 
+    public static void toCheck(List<String> words) {
+        if (words.get(1).equals("supplies")) {
+            System.out.println("You have " + supplies + " supplies left. Better find the treasure soon!");
+        } else if (words.get(1).equals("inventory")) {
+            playerInventory.forEach(item -> System.out.println(item.getItemName()) );
+        } else {
+            System.out.println("I'm not sure what you're trying to accomplish");
+        }
+
+    }
+
 
     public static void parseCommand(List<String> words) throws Exception {
         String verb;
         String noun;
-        List<String> commands = new ArrayList<>(Arrays.asList("sail", "inspect", "take", "drop"));
-        List<String> nouns = new ArrayList<>(Arrays.asList("north", "east", "south", "west", "banana", "used-chewing-gum", "gold-coin", "skull"));
+        List<String> commands = new ArrayList<>(Arrays.asList("sail", "inspect", "take", "drop", "check"));
+        List<String> nouns = new ArrayList<>(Arrays.asList("north", "east", "south", "west", "banana", "used-chewing-gum", "gold-coin", "skull", "supplies", "inventory", "coconut"));
         if (words.size() != 2) {
             System.out.println("Commands should just be 2 words");
         } else {
@@ -161,6 +173,9 @@ public class Game {
         }
         if (words.get(0).equals("take")) {
             toTake(words);
+        }
+        if (words.get(0).equals("check")) {
+            toCheck(words);
         }
 
     }
@@ -180,5 +195,11 @@ public class Game {
         return output;
     }
 
+
+    public static void checkForEvents() {
+        if (currentLocation == 4) {
+            supplies = supplies - 5;
+        }
+    }
 
 }
