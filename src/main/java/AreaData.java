@@ -11,7 +11,7 @@ public class AreaData {
         areas.add(new Area(1, "You're on the open sea. An island is directly to your East and another in the distance to the South", new int[]{-1, 2, 6, 0}, 0, 1));
         areas.add(new Area(2, "You're on Island 2", new int[]{-1, 3, 7, 1}, 0, 2));
         areas.add(new Area(3, "You're on the open sea. An island is directly to your West. The water is looking a little choppy to your East", new int[]{-1, 4, 8, 2}, 0, 3));
-        areas.add(new Area(4, "You've hit a storm. The waves throw your ship around as if it's a toy. Eventually the storm dies down and you assess the damage. You've lost 5 supplies. You can see islands in the distance to the East and the South", new int[]{-1, -1, 9, 3}, 0, 4));
+        areas.add(new Area(4, "You've hit a storm. The waves throw your ship around as if it's a toy.", new int[]{-1, -1, 9, 3}, 0, 4));
         areas.add(new Area(5, "You're on the open sea. An island is to your South East", new int[]{0, 6, 10, -1}, 1, 0));
         areas.add(new Area(6, "You're on the open sea. An island is directly to your South and another to your North East", new int[]{1, 7, 11, 5}, 1, 1));
         areas.add(new Area(7, "You're on the open sea. An island is directly to your North and another to your South West", new int[]{2, 8, 12, 6}, 1, 2));
@@ -28,7 +28,7 @@ public class AreaData {
         areas.add(new Area(18, "You're heading through the barrier reef. You'd better know what you're doing", new int[]{13, 19, 23, 17}, 3, 3));
         areas.add(new Area(19, "You're heading through the barrier reef. You'd better know what you're doing", new int[]{14, -1, 24, 18}, 3, 4));
         areas.add(new Area(20, "You're on Island 20", new int[]{15, 21, -1, -1}, 4, 0));
-        areas.add(new Area(21, "This is the second area 1", new int[]{16, 22, -1, 20}, 4, 1));
+        areas.add(new Area(21, "You've sailed straight into a whirling maelstrom. You desperately steer the ship away, but you get pulled in. Everything goes black.", new int[]{16, 22, -1, 20}, 4, 1));
         areas.add(new Area(22, "This is the third area 2", new int[]{17, 23, -1, 21}, 4, 2));
         areas.add(new Area(23, "You're heading through the barrier reef. You'd better know what you're doing", new int[]{18, 24, -1, 22}, 4, 3));
         areas.add(new Area(24, "You've found Skull Island. Here be buried treasure! Yar!", new int[]{19, -1, -1, 23}, 4, 4));

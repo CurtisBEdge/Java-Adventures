@@ -100,7 +100,6 @@ public class Game {
                 boardWindow.getBoard().setCell(foundArea.getRowPosition(), foundArea.getColumnPosition(), CellType.VISITED);
                 currentLocation = directionOptions[sailDirection];
                 Area newArea = getGameArea();
-                checkForEvents();
                 boardWindow.getBoard().setCell(newArea.getRowPosition(), newArea.getColumnPosition(), CellType.CURRENT_ROOM);
                 boardWindow.repaint();
             } else {
@@ -188,7 +187,6 @@ public class Game {
             output = "...Well?";
         } else {
             wordList = getWordList(lowerCaseTrimmed);
-//            wordList.forEach(System.out::println);
             parseCommand(wordList);
         }
 
@@ -198,7 +196,16 @@ public class Game {
 
     public static void checkForEvents() {
         if (currentLocation == 4) {
+            System.out.println("Eventually the storm dies down and you assess the damage. You've lost 5 supplies. You can see islands in the distance to the East and the South");
             supplies = supplies - 5;
+        }
+        if (currentLocation == 21) {
+            System.out.println("When you come to, you're miles away from where you hit the maelstrom. Be more careful in future.");
+            System.out.println("An island is directly to your West. The water is looking a little choppy to your East");
+            boardWindow.getBoard().setCell(4, 1, CellType.VISITED);
+            boardWindow.getBoard().setCell(0, 3, CellType.CURRENT_ROOM);
+            supplies = supplies - 2;
+            currentLocation = 3;
         }
     }
 

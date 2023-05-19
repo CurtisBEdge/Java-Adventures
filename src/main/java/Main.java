@@ -24,6 +24,7 @@ public class Main {
         Game.loadIslandItems();
         do {
             Game.printAreaText();
+            Game.checkForEvents();
             System.out.print("> ");
             input = sc.nextLine();
             output = game.runCommand(input);
