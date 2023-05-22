@@ -14,6 +14,9 @@ public class Game {
     public static ArrayList<Item> island14Inventory;
     public static ArrayList<Item> island20Inventory;
 
+    public static boolean area1ShipAttacked = false;
+    public static boolean island2FalconTraded = false;
+
 
 
     public static int currentLocation = 0;
@@ -146,15 +149,48 @@ public class Game {
         } else {
             System.out.println("I'm not sure what you're trying to accomplish");
         }
+    }
 
+    public static void toAttack(List<String> words) {
+        if (currentLocation == 1) {
+            if (words.get(1).equals("ship")) {
+                if (area1ShipAttacked == false) {
+                    System.out.println("You mercilessly attack the defenseless trading vessel. There's no riches about, just a few supplies and a statue of a Falcon");
+                    supplies = supplies + 2;
+                    playerInventory.add(itemData.loadFalcon());
+                    area1ShipAttacked = true;
+                } else {
+                    System.out.println("There are no ships in this area");
+                }
+            } else {
+                System.out.println("You attempt to attack the " + words.get(1) + ", but just end up looking silly. I hope no one was watching");
+            }
+
+        }
+    }
+
+    public static void toTrade(List<String> words) {
+        if (!playerInventory.stream().anyMatch(item -> item.getItemName().equals(words.get(1)))) {
+            System.out.println("You can't trade an item you don't have. You must have dropped it somewhere");
+        } else {
+            if (currentLocation == 2) {
+                if (words.get(1).equals("falcon")) {
+                    if (island2FalconTraded == false) {
+                        System.out.println("Ah, that's a lovely bird you've got there. I had one just like it years ago.");
+                        System.out.println("The pirate you need is on an island to the South East. I doubt he'll help you though, as his monkey recently died in a musket duel");
+                    }
+                }
+
+            }
+        }
     }
 
 
     public static void parseCommand(List<String> words) throws Exception {
         String verb;
         String noun;
-        List<String> commands = new ArrayList<>(Arrays.asList("sail", "inspect", "take", "drop", "check"));
-        List<String> nouns = new ArrayList<>(Arrays.asList("north", "east", "south", "west", "banana", "used-chewing-gum", "gold-coin", "skull", "supplies", "inventory", "coconut"));
+        List<String> commands = new ArrayList<>(Arrays.asList("sail", "take", "check", "attack"));
+        List<String> nouns = new ArrayList<>(Arrays.asList("north", "east", "south", "west", "banana", "used-chewing-gum", "gold-coin", "skull", "supplies", "inventory", "coconut", "falcon", "ship"));
         if (words.size() != 2) {
             System.out.println("Commands should just be 2 words");
         } else {
@@ -176,6 +212,12 @@ public class Game {
         if (words.get(0).equals("check")) {
             toCheck(words);
         }
+        if (words.get(0).equals("attack")) {
+            toAttack(words);
+        }
+        if (words.get(0).equals("trade")) {
+            toTrade(words);
+        }
 
     }
 
@@ -195,6 +237,11 @@ public class Game {
 
 
     public static void checkForEvents() {
+        if (currentLocation == 1) {
+            if (area1ShipAttacked == false) {
+                System.out.println("There is a very vulnerable looking trading ship nearby, that looks full of potential riches.");
+            }
+        }
         if (currentLocation == 4) {
             System.out.println("Eventually the storm dies down and you assess the damage. You've lost 5 supplies. You can see islands in the distance to the East and the South");
             supplies = supplies - 5;
@@ -206,6 +253,11 @@ public class Game {
             boardWindow.getBoard().setCell(0, 3, CellType.CURRENT_ROOM);
             supplies = supplies - 2;
             currentLocation = 3;
+        }
+        if (currentLocation == 2) {
+            if (island2FalconTraded == false);
+            System.out.println("A grizzled old pirate subtly gestures for you to come over. He has old scars on his shoulder where it looks like a bird has spent years of perching, but there's no signs of it today.");
+            System.out.println("'I hear you're looking for the treasure on Skull Island. I know a pirate you need to speak to, and I'll let you know who if you make it worth my while. ");
         }
     }
 

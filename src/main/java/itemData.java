@@ -38,6 +38,10 @@ public class itemData {
         return island20Items;
     }
 
+    public static Item loadFalcon() {
+        return new Item("Falcon");
+    }
+
 
 
 }

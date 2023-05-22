@@ -1,4 +1,7 @@
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+import java.util.List;
 
 public class Main {
 
@@ -11,8 +14,7 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
-
-        System.out.println("Welcome to the world's most exciting text adventure game.");
+        StarterText.starterText();
         String input;
         String output;
         try {

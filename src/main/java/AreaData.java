@@ -17,12 +17,12 @@ public class AreaData {
         areas.add(new Area(7, "You're on the open sea. An island is directly to your North and another to your South West", new int[]{2, 8, 12, 6}, 1, 2));
         areas.add(new Area(8, "You're on the open sea. An island is directly to your North West", new int[]{3, 9, 13, 7}, 1, 3));
         areas.add(new Area(9, "You're on the open sea. An island is directly to your South", new int[]{4, -1, 14, 8}, 1, 4));
-        areas.add(new Area(10, "This is the third area 2", new int[]{5, 11, 15, -1}, 2, 0));
-        areas.add(new Area(11, "This is the fourth area 3", new int[]{6, 12, 16, 10}, 2, 1));
-        areas.add(new Area(12, "This is the first area 0", new int[]{7, 13, 17, 11}, 2, 2));
-        areas.add(new Area(13, "This is the second area 1", new int[]{8, 14, 18, 12}, 2, 3));
+        areas.add(new Area(10, "You're on the open sea. An island is directly to your East and another in the distance to the South", new int[]{5, 11, 15, -1}, 2, 0));
+        areas.add(new Area(11, "You're on Island 11", new int[]{6, 12, 16, 10}, 2, 1));
+        areas.add(new Area(12, "You're on the open sea. An island is directly to your West others in the distance to the North and East", new int[]{7, 13, 17, 11}, 2, 2));
+        areas.add(new Area(13, "You're on the open sea. An island is directly to your East and another in the distance to the West", new int[]{8, 14, 18, 12}, 2, 3));
         areas.add(new Area(14, "You're on Island 14", new int[]{9, -1, 19, 13}, 2, 4));
-        areas.add(new Area(15, "This is the fourth area 3", new int[]{10, 16, 20, -1}, 3, 0));
+        areas.add(new Area(15, "You're on the open sea. An island is directly to your South another to the North East", new int[]{10, 16, 20, -1}, 3, 0));
         areas.add(new Area(16, "This is the first area 0", new int[]{11, 17, 21, 15}, 3, 1));
         areas.add(new Area(17, "This is the second area 1", new int[]{12, 18, 22, 16}, 3, 2));
         areas.add(new Area(18, "You're heading through the barrier reef. You'd better know what you're doing", new int[]{13, 19, 23, 17}, 3, 3));
