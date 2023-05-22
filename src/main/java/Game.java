@@ -16,6 +16,7 @@ public class Game {
 
     public static boolean area1ShipAttacked = false;
     public static boolean island2FalconTraded = false;
+    public static boolean barrierReefRoute = false;
 
 
 
@@ -182,8 +183,10 @@ public class Game {
                         island2FalconTraded = true;
                         System.out.println(island2FalconTraded);
                     }
+                } else {
+                    System.out.println("The old pirate gives you a funny look and says");
+                    System.out.println("'Why would I want that from you!?'");
                 }
-
             }
         }
     }
@@ -262,6 +265,12 @@ public class Game {
                 System.out.println("A grizzled old pirate subtly gestures for you to come over. He has old scars on his shoulder where it looks like a bird has spent years of perching, but there's no signs of it today.");
                 System.out.println("'I hear you're looking for the treasure on Skull Island. I know a pirate you need to speak to, and I'll let you know who if you make it worth my while. ");
             }
+        }
+        if (currentLocation == 24) {
+            if (barrierReefRoute == false) {
+
+            }
+
         }
     }
 
