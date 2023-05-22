@@ -245,6 +245,17 @@ public class Game {
         }
     }
 
+    public static void toCheatS (List<String> words) {
+        if (words.get(1).equals("more")) {
+            supplies = supplies + 20;
+        }
+    }
+
+    public static void toCheatL (List<String> words) {
+        int location = Integer.parseInt(words.get(1));
+        currentLocation = location;
+    }
+
 
     public static void parseCommand(List<String> words) throws Exception {
         String verb;
@@ -277,6 +288,12 @@ public class Game {
         }
         if (words.get(0).equals("trade")) {
             toTrade(words);
+        }
+        if (words.get(0).equals("cheats")) {
+            toCheatS(words);
+        }
+        if (words.get(0).equals("cheatl")) {
+            toCheatL(words);
         }
 
     }
