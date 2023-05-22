@@ -39,7 +39,7 @@ public class itemData {
     }
 
     public static Item loadFalcon() {
-        return new Item("Falcon");
+        return new Item("falcon");
     }
 
 

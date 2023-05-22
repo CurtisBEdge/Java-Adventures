@@ -170,14 +170,17 @@ public class Game {
     }
 
     public static void toTrade(List<String> words) {
-        if (!playerInventory.stream().anyMatch(item -> item.getItemName().equals(words.get(1)))) {
+        if ((!playerInventory.stream().anyMatch(item -> item.getItemName().equals(words.get(1))))) {
             System.out.println("You can't trade an item you don't have. You must have dropped it somewhere");
         } else {
             if (currentLocation == 2) {
                 if (words.get(1).equals("falcon")) {
                     if (island2FalconTraded == false) {
                         System.out.println("Ah, that's a lovely bird you've got there. I had one just like it years ago.");
-                        System.out.println("The pirate you need is on an island to the South East. I doubt he'll help you though, as his monkey recently died in a musket duel");
+                        System.out.println("The pirate you need is on an island to the South East. I doubt he'll help you though, as his monkey recently died in a musket duel.");
+                        playerInventory.removeIf(item -> item.getItemName().equals("falcon"));
+                        island2FalconTraded = true;
+                        System.out.println(island2FalconTraded);
                     }
                 }
 
@@ -189,7 +192,7 @@ public class Game {
     public static void parseCommand(List<String> words) throws Exception {
         String verb;
         String noun;
-        List<String> commands = new ArrayList<>(Arrays.asList("sail", "take", "check", "attack"));
+        List<String> commands = new ArrayList<>(Arrays.asList("sail", "take", "check", "attack", "trade"));
         List<String> nouns = new ArrayList<>(Arrays.asList("north", "east", "south", "west", "banana", "used-chewing-gum", "gold-coin", "skull", "supplies", "inventory", "coconut", "falcon", "ship"));
         if (words.size() != 2) {
             System.out.println("Commands should just be 2 words");
@@ -255,9 +258,10 @@ public class Game {
             currentLocation = 3;
         }
         if (currentLocation == 2) {
-            if (island2FalconTraded == false);
-            System.out.println("A grizzled old pirate subtly gestures for you to come over. He has old scars on his shoulder where it looks like a bird has spent years of perching, but there's no signs of it today.");
-            System.out.println("'I hear you're looking for the treasure on Skull Island. I know a pirate you need to speak to, and I'll let you know who if you make it worth my while. ");
+            if (island2FalconTraded == false) {
+                System.out.println("A grizzled old pirate subtly gestures for you to come over. He has old scars on his shoulder where it looks like a bird has spent years of perching, but there's no signs of it today.");
+                System.out.println("'I hear you're looking for the treasure on Skull Island. I know a pirate you need to speak to, and I'll let you know who if you make it worth my while. ");
+            }
         }
     }
 
