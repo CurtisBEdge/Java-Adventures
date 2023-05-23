@@ -42,6 +42,10 @@ public class Main {
             System.out.println("You've run aground on the barrier reef. You have a long time to contemplate your mistake as you starve on the reef.");
             System.out.println("Game Over");
         }
+        if (winState.equals("boat sank")) {
+            System.out.println("You bit off more than you can chew. Say hi to Davy Jones for me.");
+            System.out.println("Game Over");
+        }
 
     }
 

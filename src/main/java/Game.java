@@ -5,6 +5,8 @@ public class Game {
     public static ArrayList<Area> areas;
     public static int supplies = 20;
 
+    public static boolean playerKilled = false;
+
     public static ArrayList<Item> playerInventory = new ArrayList<>();
     public static ArrayList<Item> island2Inventory;
     public static ArrayList<Item> island11Inventory;
@@ -16,6 +18,7 @@ public class Game {
     public static boolean island11MonkeyTraded = false;
     public static boolean island14BananaTraded = false;
     public static boolean barrierReefRoute = false;
+    public static boolean piratesAttacked = false;
 
     public static int currentLocation = 0;
     public static boolean justArrived = true;
@@ -34,6 +37,9 @@ public class Game {
         }
         if (supplies < 1) {
             return "supplies";
+        }
+        if (playerKilled == true) {
+            return "boat sank";
         }
         return "playing";
     }
@@ -176,7 +182,23 @@ public class Game {
             } else {
                 System.out.println("You attempt to attack the " + words.get(1) + ", but just end up looking silly. I hope no one was watching");
             }
-
+        }
+        if (currentLocation == 6) {
+            if ((words.get(1).equals("navy")) || (words.get(1).equals("ship"))) {
+                System.out.println("You bravely (and foolishly) attack the heavily armed navy ship. Did you really think you stood a chance?");
+                playerKilled = true;
+            } else {
+                System.out.println("You attempt to attack the " + words.get(1) + ", but just end up looking silly. I hope no one was watching");
+            }
+        }
+        if (currentLocation == 13) {
+            if ((words.get(1).equals("pirates")) || (words.get(1).equals("ship"))) {
+                System.out.println("You quickly gain the upper hand in the battle. The other ship limps away sadly. You show mercy and let them go, but not before you've raided their cargo");
+                supplies = supplies + 5;
+                piratesAttacked = true;
+            } else {
+                System.out.println("You attempt to attack the " + words.get(1) + ", but just end up looking silly. I hope no one was watching");
+            }
         }
     }
 
@@ -264,7 +286,7 @@ public class Game {
         String verb;
         String noun;
         List<String> commands = new ArrayList<>(Arrays.asList("sail", "take", "check", "attack", "trade"));
-        List<String> nouns = new ArrayList<>(Arrays.asList("north", "east", "south", "west", "banana", "used-chewing-gum", "gold-coin", "skull", "supplies", "inventory", "coconut", "falcon", "ship", "monkey"));
+        List<String> nouns = new ArrayList<>(Arrays.asList("north", "east", "south", "west", "banana", "used-chewing-gum", "gold-coin", "skull", "supplies", "inventory", "coconut", "falcon", "ship", "monkey", "navy", "pirates"));
         if (words.size() != 2) {
             System.out.println("Commands should just be 2 words");
         } else {
@@ -340,6 +362,16 @@ public class Game {
                 System.out.println("'I hear you're looking for the treasure on Skull Island. I know a pirate you need to speak to, and I'll let you know who if you make it worth my while. ");
             }
         }
+        if (currentLocation == 6) {
+            System.out.println("You see a navy ship patrolling the area. Unluckily for you, you're flying your pirate colours loud and proud.");
+            System.out.println("BOOOOOOM!!");
+            System.out.println("Before you have time to think, the navy are already firing their cannons at you.");
+            System.out.println("The crew dump some supplies to lose weight to flee from the navy.");
+            System.out.println("You now have 5 fewer supplies.");
+            System.out.println("Leave the area before they attack you again");
+            supplies = supplies - 5;
+        }
+
         if (currentLocation == 14) {
             if (island14BananaTraded == false) {
                 System.out.println("There's a monkey looking at you expectantly");
@@ -357,6 +389,15 @@ public class Game {
                 System.out.println("'Now I'm retired, I just want my old friend back'");
             }
         }
+        if (currentLocation == 13) {
+            System.out.println("You see a rival pirate ship in the distance.");
+            if (piratesAttacked == false) {
+                System.out.println("The ship gains on you with great speed (maybe they're not using the same wind that you are using?)");
+                System.out.println("The rival pirates begin firing. It's a direct hit! Supplies left on deck that you should have stowed away become a cloud of debris");
+                System.out.println("They're are closing in, what do you do?");
+                supplies = supplies - 2;
+            }
+        }
         if (currentLocation == 20) {
             if (barrierReefRoute == false) {
                 System.out.println("There is a near-collapsed hut outside of a small village, where a tatooed-faced woman was treating a few people with her voodoo");
@@ -368,13 +409,5 @@ public class Game {
                 }
             }
         }
-
-        if (currentLocation == 24) {
-            if (barrierReefRoute == false) {
-
-            }
-
-        }
     }
-
 }
