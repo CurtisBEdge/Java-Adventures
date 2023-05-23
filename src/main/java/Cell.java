@@ -2,6 +2,8 @@ public class Cell {
 
   private final int row;
   private final int column;
+
+  private String imagePath = null;
   private CellType cellType = CellType.EMPTY;
 
   public Cell(int row, int column) {
@@ -25,4 +27,11 @@ public class Cell {
     this.cellType = cellType;
   }
 
+  public String getImagePath() {
+    return imagePath;
+  }
+
+  public void setImagePath(String imagePath) {
+    this.imagePath = imagePath;
+  }
 }

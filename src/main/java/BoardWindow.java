@@ -1,5 +1,9 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class BoardWindow extends Canvas {
 
@@ -45,18 +49,38 @@ public class BoardWindow extends Canvas {
     g.fillRect(column * cellSize, row * cellSize, cellSize, cellSize);
   }
 
+  private void drawImage(int row, int column, Graphics g, String imagePath) {
+    File file = new File("resources/" + imagePath);
+    BufferedImage image = null;
+    try {
+      image = ImageIO.read(new File(file.getAbsolutePath()));
+      g.drawImage(image, column*cellSize, row*cellSize, cellSize, cellSize, this);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
   @Override
   public void paint(Graphics g) {
     super.paint(g);
     for (int i = 0; i < board.getRowCount(); i++) {
       for (int j = 0; j < board.getColumnCount(); j++) {
         Cell cell = board.getCells()[i][j];
+        String imagePath = cell.getImagePath();
         switch (cell.getCellType()) {
           case VISITED:
-            drawCell(i, j, new Color(0x413F42), g);
+            if (imagePath == null) {
+              drawCell(i, j, new Color(0x413F42), g);
+            } else {
+              drawImage(i, j, g, imagePath);
+            }
             break;
           case CURRENT_ROOM:
-            drawCell(i, j, new Color(0x7F8487), g);
+            if (imagePath == null) {
+              drawCell(i, j, new Color(0x7F8487), g);
+            } else {
+              drawImage(i, j, g, imagePath);
+            }
             break;
           case START:
             drawCell(i, j, new Color(0xCAF0F8), g);
