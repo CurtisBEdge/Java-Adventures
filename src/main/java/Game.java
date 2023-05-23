@@ -29,7 +29,7 @@ public class Game {
 
     public static String checkWinState() {
         if (currentLocation == 24) {
-            if (barrierReefRoute == true) {
+            if (barrierReefRoute) {
                 return "win";
             }else {
                 return "barrier";
@@ -38,7 +38,7 @@ public class Game {
         if (supplies < 1) {
             return "supplies";
         }
-        if (playerKilled == true) {
+        if (playerKilled) {
             return "boat sank";
         }
         return "playing";
@@ -150,7 +150,7 @@ public class Game {
             Item takenItem = currentLocationInventory.stream()
                     .filter(item -> words.get(1).equals(item.getItemName().toLowerCase()))
                     .findFirst()
-                    .orElseThrow(()-> new ItemNotFoundException());
+                    .orElseThrow(ItemNotFoundException::new);
             playerInventory.add(takenItem);
             currentLocationInventory.remove(takenItem);
         } catch (ItemNotFoundException e) {
@@ -171,7 +171,7 @@ public class Game {
     public static void toAttack(List<String> words) {
         if (currentLocation == 1) {
             if (words.get(1).equals("ship")) {
-                if (area1ShipAttacked == false) {
+                if (!area1ShipAttacked) {
                     System.out.println("You mercilessly attack the defenseless trading vessel. There's no riches about, just a few supplies and a statue of a Falcon");
                     supplies = supplies + 2;
                     playerInventory.add(itemData.loadFalcon());
@@ -203,11 +203,11 @@ public class Game {
     }
 
     public static void toTrade(List<String> words) {
-        if ((!playerInventory.stream().anyMatch(item -> item.getItemName().equals(words.get(1))))) {
+        if ((playerInventory.stream().noneMatch(item -> item.getItemName().equals(words.get(1))))) {
             System.out.println("You can't trade an item you don't have. You must have dropped it somewhere");
         } else {
             if (currentLocation == 2) {
-                if (island2FalconTraded == false) {
+                if (!island2FalconTraded) {
                     if (words.get(1).equals("falcon")) {
                         System.out.println("Ah, that's a lovely bird you've got there. I had one just like it years ago.");
                         System.out.println("The pirate you need is on an island to the South West. I doubt he'll help you though, as his monkey recently died in a musket duel.");
@@ -222,14 +222,13 @@ public class Game {
                 }
             }
             if (currentLocation == 14) {
-                if (island14BananaTraded == false) {
+                if (!island14BananaTraded) {
                     if (words.get(1).equals("banana")) {
                         System.out.println("'Ook Ook'");
                         System.out.println("The monkey climbs onto your back. You have a new friend.");
                         playerInventory.removeIf(item -> item.getItemName().equals("banana"));
                         island14BananaTraded = true;
                         playerInventory.add(itemData.loadMonkey());
-                        supplies = supplies + 0;
                     } else {
                         System.out.println("The monkey looks at what you've offered with disappointment.");
                     }
@@ -238,11 +237,10 @@ public class Game {
                 }
             }
             if (currentLocation == 11) {
-                if (island11MonkeyTraded == false) {
+                if (!island11MonkeyTraded) {
                     if (words.get(1).equals("monkey")) {
                         island11MonkeyTraded = true;
                         playerInventory.removeIf(item -> item.getItemName().equals("monkey"));
-                        supplies = supplies + 0;
                         System.out.println("The old pirate's face lights up as the monkey runs up his back");
                         System.out.println("'Thanks! To get to Skull Island, you need to speak with an old friend of mine, who might help you, but for a price.'");
                         System.out.println("'Last I heard, she was on an island to the South West. Be careful how you approach her, she's very in tune with the Loa'");
@@ -254,7 +252,7 @@ public class Game {
                 }
             }
             if (currentLocation == 20) {
-                if (barrierReefRoute == false) {
+                if (!barrierReefRoute) {
                     if (words.get(1).equals("skull")) {
                         barrierReefRoute = true;
                         System.out.println("The woman gives the skull a long, deep look.");
@@ -277,8 +275,7 @@ public class Game {
     }
 
     public static void toCheatL (List<String> words) {
-        int location = Integer.parseInt(words.get(1));
-        currentLocation = location;
+        currentLocation = Integer.parseInt(words.get(1));
     }
 
 
@@ -340,7 +337,7 @@ public class Game {
 
     public static void checkForEvents() {
         if (currentLocation == 1) {
-            if (area1ShipAttacked == false) {
+            if (!area1ShipAttacked) {
                 System.out.println("There is a very vulnerable looking trading ship nearby, that looks full of potential riches.");
             }
         }
@@ -357,7 +354,7 @@ public class Game {
             currentLocation = 3;
         }
         if (currentLocation == 2) {
-            if (island2FalconTraded == false) {
+            if (!island2FalconTraded) {
                 System.out.println("A grizzled old pirate subtly gestures for you to come over. He has old scars on his shoulder where it looks like a bird has spent years of perching, but there's no signs of it today.");
                 System.out.println("'I hear you're looking for the treasure on Skull Island. I know a pirate you need to speak to, and I'll let you know who if you make it worth my while. ");
             }
@@ -373,7 +370,7 @@ public class Game {
         }
 
         if (currentLocation == 14) {
-            if (island14BananaTraded == false) {
+            if (!island14BananaTraded) {
                 System.out.println("There's a monkey looking at you expectantly");
                 System.out.println("'Ook'");
                 System.out.println("A local greets you with a wry sense of scorn.");
@@ -382,7 +379,7 @@ public class Game {
             }
         }
         if (currentLocation == 11) {
-            if (island11MonkeyTraded == false) {
+            if (!island11MonkeyTraded) {
                 System.out.println("An old, retired pirate wanders sadly along the beach, occasionally looking out to the far east.");
                 System.out.println("He notices you and gives you a pitiful look.");
                 System.out.println("'I remember when I was young a stupid like you. You never value what's important, always chasing treasure instead.'");
@@ -391,7 +388,7 @@ public class Game {
         }
         if (currentLocation == 13) {
             System.out.println("You see a rival pirate ship in the distance.");
-            if (piratesAttacked == false) {
+            if (!piratesAttacked) {
                 System.out.println("The ship gains on you with great speed (maybe they're not using the same wind that you are using?)");
                 System.out.println("The rival pirates begin firing. It's a direct hit! Supplies left on deck that you should have stowed away become a cloud of debris");
                 System.out.println("They're are closing in, what do you do?");
@@ -399,8 +396,8 @@ public class Game {
             }
         }
         if (currentLocation == 20) {
-            if (barrierReefRoute == false) {
-                System.out.println("There is a near-collapsed hut outside of a small village, where a tatooed-faced woman was treating a few people with her voodoo");
+            if (!barrierReefRoute) {
+                System.out.println("There is a near-collapsed hut outside of a small village, where a tattooed-faced woman was treating a few people with her voodoo");
                 System.out.println("She looks at you and says with her deep voice");
                 if (playerInventory.stream().anyMatch(item -> item.getItemName().equals("skull"))) {
                     System.out.println("'You might have exactly what I need");
