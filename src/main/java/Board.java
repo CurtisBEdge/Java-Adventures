@@ -34,4 +34,9 @@ public class Board {
   public void setCell(int row, int column, CellType cellType) {
     cells[row][column].setCellType(cellType);
   }
+
+  public void setCell(int row, int column, CellType cellType, String imagePath) {
+    cells[row][column].setCellType(cellType);
+    cells[row][column].setImagePath(imagePath);
+  }
 }

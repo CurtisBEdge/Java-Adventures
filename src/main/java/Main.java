@@ -6,9 +6,6 @@ import java.util.List;
 public class Main {
 
     public static String winState = "playing";
-//    public static boolean hasSupplies = true;
-//
-//    public static boolean barrierPass = false;
 
     private static Scanner sc = new Scanner(System.in);
 

@@ -23,13 +23,13 @@ public class AreaData {
         areas.add(new Area(13, "You're on the open sea. An island is directly to your East and another in the distance to the West.", new int[]{8, 14, 18, 12}, 2, 3));
         areas.add(new Area(14, "You're on Monkey Island. No secrets here.", new int[]{9, -1, 19, 13}, 2, 4));
         areas.add(new Area(15, "You're on the open sea. An island is directly to your South another to the North East", new int[]{10, 16, 20, -1}, 3, 0));
-        areas.add(new Area(16, "This is the first area 16", new int[]{11, 17, 21, 15}, 3, 1));
-        areas.add(new Area(17, "This is the second area 17", new int[]{12, 18, 22, 16}, 3, 2));
+        areas.add(new Area(16, "You're on the open sea. Island are directly to your North and your South West", new int[]{11, 17, 21, 15}, 3, 1));
+        areas.add(new Area(17, "You're on the open sea. An island is directly to your North West", new int[]{12, 18, 22, 16}, 3, 2));
         areas.add(new Area(18, "You're heading through the barrier reef. You'd better know what you're doing", new int[]{13, 19, 23, 17}, 3, 3));
         areas.add(new Area(19, "You're heading through the barrier reef. You'd better know what you're doing", new int[]{14, -1, 24, 18}, 3, 4));
         areas.add(new Area(20, "You're on Island 20", new int[]{15, 21, -1, -1}, 4, 0));
         areas.add(new Area(21, "You've sailed straight into a whirling maelstrom. You desperately steer the ship away, but you get pulled in. Everything goes black.", new int[]{16, 22, -1, 20}, 4, 1));
-        areas.add(new Area(22, "This is the third area 2", new int[]{17, 23, -1, 21}, 4, 2));
+        areas.add(new Area(22, "You're on the open sea. An island is in the distance to your East", new int[]{17, 23, -1, 21}, 4, 2));
         areas.add(new Area(23, "You're heading through the barrier reef. You'd better know what you're doing", new int[]{18, 24, -1, 22}, 4, 3));
         areas.add(new Area(24, "You've found Skull Island. Here be buried treasure! Yar!", new int[]{19, -1, -1, 23}, 4, 4));
 

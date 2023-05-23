@@ -17,8 +17,6 @@ public class Game {
     public static boolean island14BananaTraded = false;
     public static boolean barrierReefRoute = false;
 
-
-
     public static int currentLocation = 0;
     public static boolean justArrived = true;
 
@@ -50,7 +48,7 @@ public class Game {
     }
 
     public static void loadMap() {
-        boardWindow.getBoard().setCell(0, 0, CellType.START);
+        boardWindow.getBoard().setCell(0, 0, CellType.CURRENT_ROOM, "pirate-ship.jpeg");
     }
 
     public static void loadAreas() {
@@ -110,13 +108,17 @@ public class Game {
                 System.out.println("Aye, Captain!");
                 justArrived = true;
                 supplies--;
-                boardWindow.getBoard().setCell(foundArea.getRowPosition(), foundArea.getColumnPosition(), CellType.VISITED);
+                if ((currentLocation == 2) || (currentLocation == 11) || (currentLocation == 14) || (currentLocation == 20)) {
+                    boardWindow.getBoard().setCell(foundArea.getRowPosition(), foundArea.getColumnPosition(), CellType.VISITED, "island-image.jpeg");
+                } else {
+                    boardWindow.getBoard().setCell(foundArea.getRowPosition(), foundArea.getColumnPosition(), CellType.VISITED, null);
+                }
                 currentLocation = directionOptions[sailDirection];
                 Area newArea = getGameArea();
-                boardWindow.getBoard().setCell(newArea.getRowPosition(), newArea.getColumnPosition(), CellType.CURRENT_ROOM);
+                boardWindow.getBoard().setCell(newArea.getRowPosition(), newArea.getColumnPosition(), CellType.CURRENT_ROOM, "pirate-ship.jpeg");
                 boardWindow.repaint();
             } else {
-                System.out.println("You can't sail us off the edge of the world, Captain.");
+                System.out.println("Captain, Skull Island is definitely in this area. If we sail away, some other pirates might get it.");
             }
         }
     }
@@ -134,9 +136,8 @@ public class Game {
         } else {
             currentLocationInventory = new ArrayList<>();
         }
-        System.out.println(words.get(1));
-
-        currentLocationInventory.forEach((item) -> System.out.println(item.getItemName())  );
+        System.out.println(words.get(1) + " taken");
+//        currentLocationInventory.forEach((item) -> System.out.println(item.getItemName())  );
 
 
         try {
@@ -184,16 +185,18 @@ public class Game {
             System.out.println("You can't trade an item you don't have. You must have dropped it somewhere");
         } else {
             if (currentLocation == 2) {
-                if (words.get(1).equals("falcon")) {
-                    if (island2FalconTraded == false) {
+                if (island2FalconTraded == false) {
+                    if (words.get(1).equals("falcon")) {
                         System.out.println("Ah, that's a lovely bird you've got there. I had one just like it years ago.");
                         System.out.println("The pirate you need is on an island to the South West. I doubt he'll help you though, as his monkey recently died in a musket duel.");
                         playerInventory.removeIf(item -> item.getItemName().equals("falcon"));
                         island2FalconTraded = true;
+                    } else {
+                        System.out.println("The old pirate gives you a funny look and says");
+                        System.out.println("'Why would I want that from you!?'");
                     }
                 } else {
-                    System.out.println("The old pirate gives you a funny look and says");
-                    System.out.println("'Why would I want that from you!?'");
+                    System.out.println("There's no one here to trade with.");
                 }
             }
             if (currentLocation == 14) {
@@ -326,8 +329,8 @@ public class Game {
         if (currentLocation == 21) {
             System.out.println("When you come to, you're miles away from where you hit the maelstrom. Be more careful in future.");
             System.out.println("An island is directly to your West. The water is looking a little choppy to your East");
-            boardWindow.getBoard().setCell(4, 1, CellType.VISITED);
-            boardWindow.getBoard().setCell(0, 3, CellType.CURRENT_ROOM);
+            boardWindow.getBoard().setCell(4, 1, CellType.VISITED, null);
+            boardWindow.getBoard().setCell(0, 3, CellType.CURRENT_ROOM, "pirate-ship.jpeg");
             supplies = supplies - 2;
             currentLocation = 3;
         }
