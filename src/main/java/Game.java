@@ -172,12 +172,16 @@ public class Game {
         } else {
             System.out.println("I'm not sure what you're trying to accomplish");
         }
+        if ((currentLocation == 14) && (words.get(1).equals("secret"))) {
+            System.out.println("Alright, fine! You've found the Secret of Monkey Island. Are you happy now!?");
+        }
     }
 
     public static void toAttack(List<String> words) {
         if (currentLocation == 1) {
             if (words.get(1).equals("ship")) {
                 if (!area1ShipAttacked) {
+
                     System.out.println("You mercilessly attack the defenseless trading vessel. There's no riches about, just a few supplies and a statue of a Falcon");
                     supplies = supplies + 2;
                     playerInventory.add(itemData.loadFalcon());
@@ -303,7 +307,7 @@ public class Game {
         String verb;
         String noun;
         List<String> commands = new ArrayList<>(Arrays.asList("sail", "take", "check", "attack", "trade", "gather"));
-        List<String> nouns = new ArrayList<>(Arrays.asList("north", "east", "south", "west", "banana", "used-chewing-gum", "gold-coin", "skull", "supplies", "inventory", "coconut", "falcon", "ship", "monkey", "navy", "pirates", "apple", "blunderbuss", "spoon", "parrot", "conch", "rum", "doubloon"));
+        List<String> nouns = new ArrayList<>(Arrays.asList("north", "east", "south", "west", "banana", "used-chewing-gum", "gold-coin", "skull", "supplies", "inventory", "coconut", "falcon", "ship", "monkey", "navy", "pirates", "apple", "blunderbuss", "spoon", "parrot", "conch", "rum", "doubloon", "secret"));
         if (words.size() != 2) {
             System.out.println("Commands should just be 2 words");
         } else {
@@ -365,7 +369,7 @@ public class Game {
             }
         }
         if (currentLocation == 4) {
-            System.out.println("Eventually the storm dies down and you assess the damage. You've lost 5 supplies. You can see islands in the distance to the East and the South");
+            System.out.println("Eventually the storm dies down and you assess the damage. You've lost 5 supplies. You can see islands in the distance to the West and the South");
             supplies = supplies - 5;
         }
         if (currentLocation == 21) {

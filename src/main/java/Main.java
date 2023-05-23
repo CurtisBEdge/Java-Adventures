@@ -13,7 +13,8 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
-//        StarterText.starterText();
+        System.out.println("");
+        StarterText.starterText();
         String input;
         String output;
         try {
@@ -33,6 +34,7 @@ public class Main {
         } while ((!"quit".equals(input)) && (winState.equals("playing")));
         if (winState.equals("win")) {
             System.out.println("Congratulations, you found the treasure! You're a real pirate now!");
+            System.out.println("Now all you have to do is wait for the inevitable sequel.");
         }
         if (winState.equals("supplies")) {
             System.out.println("You've run out of supplies and your crew has mutinied. You're walking the plank.");
