@@ -23,7 +23,7 @@ public class itemData {
         ArrayList<Item> island14Items = new ArrayList<>();
         island14Items.add(new Item("spoon"));
         island14Items.add(new Item("parrot"));
-        island14Items.add(new Item("gold"));
+        island14Items.add(new Item("conch"));
 
         return island14Items;
     }

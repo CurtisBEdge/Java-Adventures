@@ -303,7 +303,7 @@ public class Game {
         String verb;
         String noun;
         List<String> commands = new ArrayList<>(Arrays.asList("sail", "take", "check", "attack", "trade", "gather"));
-        List<String> nouns = new ArrayList<>(Arrays.asList("north", "east", "south", "west", "banana", "used-chewing-gum", "gold-coin", "skull", "supplies", "inventory", "coconut", "falcon", "ship", "monkey", "navy", "pirates"));
+        List<String> nouns = new ArrayList<>(Arrays.asList("north", "east", "south", "west", "banana", "used-chewing-gum", "gold-coin", "skull", "supplies", "inventory", "coconut", "falcon", "ship", "monkey", "navy", "pirates", "apple", "blunderbuss", "spoon", "parrot", "conch", "rum", "doubloon"));
         if (words.size() != 2) {
             System.out.println("Commands should just be 2 words");
         } else {
