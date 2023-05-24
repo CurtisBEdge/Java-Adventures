@@ -1,7 +1,5 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-import java.util.List;
 
 public class Main {
 
@@ -13,7 +11,7 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
-        System.out.println("The Five Seas of Convoluted Peril");
+        System.out.println("Treasure At The End Of The Seas!");
         StarterText.starterText();
         String input;
         String output;
