@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         System.out.println("The Five Seas of Convoluted Peril");
-//        StarterText.starterText();
+        StarterText.starterText();
         String input;
         String output;
         try {
