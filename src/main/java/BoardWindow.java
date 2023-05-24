@@ -92,6 +92,12 @@ public class BoardWindow extends Canvas {
             drawImage(i, j, g, imagePath);
           default:
             break;
+          case BARRIER:
+            drawImage(i, j, g, imagePath);
+            break;
+          case TREASURE:
+            drawImage(i, j, g, imagePath);
+            break;
         }
       }
     }

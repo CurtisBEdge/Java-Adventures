@@ -27,7 +27,7 @@ public class AreaData {
         areas.add(new Area(17, "You're on the open sea. An island is directly to your North West", new int[]{12, 18, 22, 16}, 3, 2));
         areas.add(new Area(18, "You're heading through the barrier reef. You'd better know what you're doing", new int[]{13, 19, 23, 17}, 3, 3));
         areas.add(new Area(19, "You're heading through the barrier reef. You'd better know what you're doing", new int[]{14, -1, 24, 18}, 3, 4));
-        areas.add(new Area(20, "You're on Island 20", new int[]{15, 21, -1, -1}, 4, 0));
+        areas.add(new Area(20, "You're on Scabb Island", new int[]{15, 21, -1, -1}, 4, 0));
         areas.add(new Area(21, "You've sailed straight into a whirling maelstrom. You desperately steer the ship away, but you get pulled in. Everything goes black.", new int[]{16, 22, -1, 20}, 4, 1));
         areas.add(new Area(22, "You're on the open sea. An island is in the distance to your East", new int[]{17, 23, -1, 21}, 4, 2));
         areas.add(new Area(23, "You're heading through the barrier reef. You'd better know what you're doing", new int[]{18, 24, -1, 22}, 4, 3));

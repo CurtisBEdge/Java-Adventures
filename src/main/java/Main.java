@@ -13,8 +13,8 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
-        System.out.println("");
-        StarterText.starterText();
+        System.out.println("The Five Seas of Convoluted Peril");
+//        StarterText.starterText();
         String input;
         String output;
         try {
@@ -46,6 +46,11 @@ public class Main {
         }
         if (winState.equals("boat sank")) {
             System.out.println("You bit off more than you can chew. Say hi to Davy Jones for me.");
+            System.out.println("Game Over");
+        }
+        if (winState.equals("Kraken")) {
+            TimeUnit.SECONDS.sleep(2);
+            System.out.println("That was unfortunate. Did you do anything to upset someone?");
             System.out.println("Game Over");
         }
 

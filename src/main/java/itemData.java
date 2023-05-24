@@ -44,5 +44,5 @@ public class itemData {
         return new Item("monkey");
     }
 
-
+    public static Item loadMap() {return new Item("map");}
 }
