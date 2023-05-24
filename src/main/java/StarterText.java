@@ -11,8 +11,8 @@ public class StarterText {
         starterText.add("Being a pirate yourself, the first thing you notice is a treasure map clutched in his dying hand. Before thinking, you grab the map and head back to your ship.");
         starterText.add("The map shows details of a buried treasure on Skull Island, but you don't know where it is. You must sail the seas and find more clues to guide you to the treasure.");
         starterText.add("Off you go on your journey with your capable crew!");
-        starterText.add("To move around, just SAIL in a Compass Direction. You can then ATTACK, or TAKE, or TRADE anything you want. You have limited time though, so don't dally.");
-        starterText.add("Anytime you can CHECK what you have in your INVENTORY or how many SUPPLIES remain on your ship.");
+        starterText.add("To move around, just SAIL in a Compass Direction (North, South, East and West). You can then ATTACK, or TAKE, or TRADE anything you want. You have limited time though, so don't dally.");
+        starterText.add("Anytime you can CHECK what you have in your INVENTORY or how many SUPPLIES remain on your ship. If you find a likely location, maybe you can GATHER more");
 
 
         starterText.forEach(text ->

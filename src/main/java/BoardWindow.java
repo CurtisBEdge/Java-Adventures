@@ -88,7 +88,15 @@ public class BoardWindow extends Canvas {
           case EMPTY:
             drawCell(i, j, new Color(0x181818), g);
             break;
+          case WRECK:
+            drawImage(i, j, g, imagePath);
           default:
+            break;
+          case BARRIER:
+            drawImage(i, j, g, imagePath);
+            break;
+          case TREASURE:
+            drawImage(i, j, g, imagePath);
             break;
         }
       }
