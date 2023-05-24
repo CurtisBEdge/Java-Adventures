@@ -70,7 +70,7 @@ public class BoardWindow extends Canvas {
         switch (cell.getCellType()) {
           case VISITED:
             if (imagePath == null) {
-              drawCell(i, j, new Color(0x413F42), g);
+              drawCell(i, j, new Color(0x44A5D9), g);
             } else {
               drawImage(i, j, g, imagePath);
             }
