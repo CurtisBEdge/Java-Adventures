@@ -1,3 +1,9 @@
+This was my first attempt at OOP when I started learning Java as part of the Eyup Coding Academy. We were
+
+About halfway through the project, I had an epiphany regarding OOP and understood it much better, and how I'd done most of the project so far wrong. Nevertheless, I'm quite pleased with how it turned out.
+
+Below is the user stories that I was given to work with
+
 # Text Adventure Game
 
 In this project you will be making a retro text adventure game.
