@@ -446,8 +446,8 @@ public class Game {
         }
         if (currentLocation == 20) {
             if (!barrierReefRoute) {
-                System.out.println("There is a near-collapsed hut outside of a small village, where a tattooed-faced woman was treating a few people with her voodoo.");
-                System.out.println("She looks at you and says with her deep voice");
+                System.out.println("There is a near-collapsed hut outside of a small village, where a medicine woman is treating a few locals.");
+                System.out.println("She looks at you and says with contempt in her voice");
                 if (playerInventory.stream().anyMatch(item -> item.getItemName().equals("skull"))) {
                     System.out.println("'You might have exactly what I need'");
                 } else {

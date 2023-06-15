@@ -1,4 +1,4 @@
-This was my first attempt at OOP when I started learning Java as part of the Eyup Coding Academy. We were 
+This was my first attempt at OOP when I started learning Java as part of the Eyup Coding Academy. We were
 
 About halfway through the project, I had an epiphany regarding OOP and understood it much better, and how I'd done most of the project so far wrong. Nevertheless, I'm quite pleased with how it turned out.
 
