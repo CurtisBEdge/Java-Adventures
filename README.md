@@ -1,8 +1,9 @@
-This was my first attempt at OOP when I started learning Java as part of the Eyup Coding Academy. We were
 
-About halfway through the project, I had an epiphany regarding OOP and understood it much better, and how I'd done most of the project so far wrong. Nevertheless, I'm quite pleased with how it turned out.
+This was my first attempt at OOP when I started learning Java as part of the Eyup Coding Academy. We were given a simple starter project, including a 2 word parser.
 
-Below is the user stories that I was given to work with
+About halfway through the project, I had an epiphany regarding OOP and felt I understood it much better. I also realised how I'd done most of the project so far wrong, and could improve on the use of OOP greatly. Nevertheless, I'm quite pleased with how it turned out.
+
+Below is the user stories that I was given to work with.
 
 # Text Adventure Game
 
@@ -84,7 +85,7 @@ Acceptance criteria
 
 ### 5-6 Room images
 As a player...<br>
-...I want some rooms to show an image to reepresent it
+...I want some rooms to show an image to represent it
 ...so that I have some visual feedback to enhance the game play experience.
 
 Acceptance criteria
